@@ -89,7 +89,7 @@ export default {
   },
   borderWidth: {
     type: Number,
-    default: 0,
+    default: 1,
     editor: {
       type: 'a-input-number',
       label: '边框宽度(px)',
