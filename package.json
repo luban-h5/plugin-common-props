@@ -4,5 +4,9 @@
   "description": "鲁班H5插件的常见属性",
   "main": "index.js",
   "author": "ly525",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luban-h5-components/plugin-common-props.git"
+  }
 }
