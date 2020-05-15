@@ -1,26 +1,10 @@
+const defaultNumberInputProp = {
+  step: 1,
+  min: 0,
+  max: 144
+}
+
 export default {
-  text: ({ defaultValue = '按钮', label = '按钮文字' } = {}) => ({
-    type: String,
-    default: defaultValue,
-    editor: {
-      type: 'a-input',
-      label,
-      require: true
-    }
-  }),
-  type: {
-    type: String,
-    default: 'text'
-  },
-  placeholder: ({ defaultValue = '请填写提示文字' } = {}) => ({
-    type: String,
-    default: defaultValue,
-    editor: {
-      type: 'a-input',
-      label: '提示文字',
-      require: true
-    }
-  }),
   required: {
     type: Boolean,
     default: false
@@ -29,28 +13,18 @@ export default {
     type: Boolean,
     default: false
   },
-  backgroundColor: {
-    type: String,
-    default: 'rgba(255, 255, 255, 0.2)',
-    editor: {
-      type: 'el-color-picker',
-      label: '背景颜色',
-      prop: {
-        size: 'mini',
-        showAlpha: true
-      },
-      require: true
-    }
-  },
-  color: {
+  /**
+   * 颜色 默认编辑器
+   */
+  color: ({ defaultValue = '#000000', label = '文字颜色' } = {}) => ({
     type: String,
     // 注意，根据 MDN 文档，颜色选择器的 value 只能是：# + 6个16进制字符串
     // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color#Value
     // The value of an <input> element of type color is always a DOMString which contains a 7-character string specifying an RGB color in hexadecimal format.
-    default: '#000000',
+    default: defaultValue,
     editor: {
       type: 'el-color-picker',
-      label: '文字颜色',
+      label,
       // !#zh 为编辑组件指定 prop
       prop: {
         size: 'mini',
@@ -58,76 +32,38 @@ export default {
       },
       require: true
     }
-  },
-  fontSize: {
+  }),
+  /**
+   * 数值类型 默认编辑器
+   */
+  numberValue: ({ defaultValue = 10, label = '数值', prop = defaultNumberInputProp } = {}) => ({
     type: Number,
-    default: 14,
+    default: defaultValue,
     editor: {
       type: 'a-input-number',
-      label: '字号(px)',
+      label,
       require: true,
-      prop: {
-        step: 1,
-        min: 12,
-        max: 144
-      }
+      prop
     }
-  },
-  lineHeight: {
+  }),
+  /**
+   * 文本类型 默认编辑器
+   *
+   * component 可以采用
+   * 1. a-input
+   * 2. a-textarea
+   * 3. 富文本编辑器
+   */
+  stringValue: ({ defaultValue = '按钮', label = '按钮文字', component = 'a-input', prop = {} } = {}) => ({
     type: Number,
-    default: 1,
+    default: defaultValue,
     editor: {
-      type: 'a-input-number',
-      label: '行高',
+      type: component,
+      label,
       require: true,
-      prop: {
-        step: 0.1,
-        min: 0.1,
-        max: 10
-      }
+      prop
     }
-  },
-  borderWidth: {
-    type: Number,
-    default: 1,
-    editor: {
-      type: 'a-input-number',
-      label: '边框宽度(px)',
-      require: true,
-      prop: {
-        step: 1,
-        min: 0,
-        max: 10
-      }
-    }
-  },
-  borderRadius: {
-    type: Number,
-    default: 0,
-    editor: {
-      type: 'a-input-number',
-      label: '圆角(px)',
-      require: true,
-      prop: {
-        step: 0.1,
-        min: 0,
-        max: 200
-      }
-    }
-  },
-  borderColor: {
-    type: String,
-    default: '#ced4da',
-    editor: {
-      type: 'el-color-picker',
-      label: '边框颜色',
-      prop: {
-        size: 'mini',
-        showAlpha: true
-      },
-      require: true
-    }
-  },
+  }),
   textAlign: ({ defaultValue = 'center' } = {}) => ({
     type: String,
     default: defaultValue,
