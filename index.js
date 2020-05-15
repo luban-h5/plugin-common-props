@@ -55,7 +55,7 @@ export default {
    * 3. 富文本编辑器
    */
   stringValue: ({ defaultValue = '按钮', label = '按钮文字', component = 'a-input', prop = {} } = {}) => ({
-    type: Number,
+    type: String,
     default: defaultValue,
     editor: {
       type: component,
