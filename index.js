@@ -36,7 +36,7 @@ export default {
   /**
    * 数值类型 默认编辑器
    */
-  numberValue: ({ defaultValue = 10, label = '数值', prop = defaultNumberInputProp } = {}) => ({
+  number: ({ defaultValue = 10, label = '数值', prop = defaultNumberInputProp } = {}) => ({
     type: Number,
     default: defaultValue,
     editor: {
@@ -54,7 +54,7 @@ export default {
    * 2. a-textarea
    * 3. 富文本编辑器
    */
-  stringValue: ({ defaultValue = '按钮', label = '按钮文字', component = 'a-input', prop = {} } = {}) => ({
+  string: ({ defaultValue = '按钮', label = '按钮文字', component = 'a-input', prop = {} } = {}) => ({
     type: String,
     default: defaultValue,
     editor: {
@@ -70,6 +70,15 @@ export default {
     editor: {
       type: 'lbs-text-align',
       label: '文字对齐',
+      require: true
+    }
+  }),
+  textOptions: ({ defaultValue = () => [], label = '选项列表' } = {}) => ({
+    type: Array,
+    default: defaultValue,
+    editor: {
+      type: 'lbs-prop-text-enum-editor',
+      label,
       require: true
     }
   })
