@@ -16,7 +16,7 @@ export default {
   /**
    * 颜色 默认编辑器
    */
-  color: ({ defaultValue = '#000000', label = '文字颜色' } = {}) => ({
+  color: ({ label = '文字颜色', defaultValue = '#000000' } = {}) => ({
     type: String,
     // 注意，根据 MDN 文档，颜色选择器的 value 只能是：# + 6个16进制字符串
     // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color#Value
@@ -36,7 +36,7 @@ export default {
   /**
    * 数值类型 默认编辑器
    */
-  number: ({ defaultValue = 10, label = '数值', prop = defaultNumberInputProp } = {}) => ({
+  number: ({ label = '数值', defaultValue = 10, prop = defaultNumberInputProp } = {}) => ({
     type: Number,
     default: defaultValue,
     editor: {
@@ -54,7 +54,7 @@ export default {
    * 2. a-textarea
    * 3. 富文本编辑器
    */
-  string: ({ defaultValue = '按钮', label = '按钮文字', component = 'a-input', prop = {} } = {}) => ({
+  string: ({ label = '按钮文字', defaultValue = '按钮', component = 'a-input', prop = {} } = {}) => ({
     type: String,
     default: defaultValue,
     editor: {
@@ -64,16 +64,22 @@ export default {
       prop
     }
   }),
-  textAlign: ({ defaultValue = 'center' } = {}) => ({
+  textAlign: ({ label = '文字对齐', defaultValue = 'center' } = {}) => ({
     type: String,
     default: defaultValue,
     editor: {
       type: 'lbs-text-align',
-      label: '文字对齐',
+      label,
       require: true
     }
   }),
-  textOptions: ({ defaultValue = () => [], label = '选项列表' } = {}) => ({
+  textOptions: ({
+    label = '选项列表',
+    defaultValue = () => [{
+      label: 'label1',
+      value: 'value1'
+    }]
+  } = {}) => ({
     type: Array,
     default: defaultValue,
     editor: {
