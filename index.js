@@ -1,7 +1,7 @@
 const defaultNumberInputProp = {
-  step: 1,
-  min: 0,
-  max: 144
+  // step: 1,
+  // min: 0,
+  // max: 144
 }
 
 export default {

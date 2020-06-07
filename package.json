@@ -1,6 +1,6 @@
 {
   "name": "@luban-h5/plugin-common-props",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "鲁班H5插件的常见属性",
   "main": "index.js",
   "author": "ly525",
