@@ -4,6 +4,11 @@ const defaultNumberInputProp = {
   // max: 144
 }
 
+const dataSourceLayout = {
+  labelCol: { span: 24 },
+  wrapperCol: { span: 24, offset: 0 }
+}
+
 export default {
   boolean: ({ label = '开关', defaultValue = false, props = {} } = {}) => ({
     type: Boolean,
@@ -109,6 +114,18 @@ export default {
     editor: {
       type: 'lbs-image-gallery',
       label
+    }
+  }),
+  /**
+   * 数据源组件
+   */
+  excel: ({ label = '数据源', defaultValue = [], layout = dataSourceLayout } = {}) => ({
+    type: Array,
+    default: defaultValue,
+    editor: {
+      type: 'lbs-excel-editor',
+      label,
+      layout
     }
   })
 }
