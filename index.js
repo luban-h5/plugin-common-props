@@ -148,5 +148,17 @@ export default {
       label,
       layout
     }
-  })
+  }),
+  select: ({ valueType = String, label = '选项', defaultValue = [],  visible = true, options = [] } = {}) => ({
+    type: valueType,
+    default: defaultValue,
+    visible,
+    editor: {
+      type: 'a-select',
+      label,
+      props: {
+        options,
+      }
+    }
+  }),
 }
